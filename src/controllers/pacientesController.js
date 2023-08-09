@@ -33,38 +33,47 @@ const pacientesController = {
 
         }catch(error){
             res.status(400).json("Todos os campos são obrigatórios.");
-        }
+        };
     },
 
     async deletarPaciente(req, res) {
         const { id } = req.params;
 
-        await Pacientes.destroy({
+        const resultado = await Pacientes.destroy({
             where: {
                 id,
             },
         });
 
-        res.json("Paciente deletado");
+        if (resultado === 0) {
+            res.status(404).json("Paciente não encontrado para deletar");
+        };
+
+        res.status(200).json("Paciente deletado");
     },
 
     async atualizarPaciente(req, res) {
         const { id } = req.params;
         const { nome, email, idade } = req.body;
-
-        const pacienteAtualizado = await Pacientes.update(
-        {
-            nome, 
-            email,
-            idade,
-        },
-        {
-            where: {
-                id,
+    
+        const [numeroDeLinhasAfetadas] = await Pacientes.update(
+            {
+                nome,
+                email,
+                idade,
             },
-        });
-
-        res.json("Paciente atualizado");
+            {
+                where: {
+                    id,
+                },
+            }
+        );
+    
+        if (numeroDeLinhasAfetadas === 0) {
+            res.status(404).json("Paciente não encontrado para atualizar");
+        };
+    
+        res.status(200).json("Paciente atualizado");
     },
 };
 
