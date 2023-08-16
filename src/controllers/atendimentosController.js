@@ -4,16 +4,21 @@ const atendimentosController = {
 
     async listarAtendimentos(req, res) {
         const listaDeAtendimentos = await Atendimentos.findAll({
-            include: [Pacientes, Psicologos]
+            include: [
+                { model: Pacientes, attributes: ['nome', 'email', 'idade']},
+                { model: Psicologos, attributes: ['nome', 'email', 'apresentacao']}
+            ]
         });
         res.status(200).json(listaDeAtendimentos);
     },
 
     async listarAtendimentoPorId(req, res) {
         const { id } = req.params;
-    
         const atendimento = await Atendimentos.findByPk(id, {
-            include: [Pacientes, Psicologos]
+            include: [
+                { model: Pacientes, attributes: ['nome', 'email', 'idade']},
+                { model: Psicologos, attributes: ['nome', 'email', 'apresentacao']}
+            ]
         });
     
         if (!atendimento) {
@@ -36,7 +41,8 @@ const atendimentosController = {
 
         res.status(201).json(atendimentoCadastrado);
 
-        }catch(error){
+        }
+        catch(error){
             res.status(400).json("Todos os campos são obrigatórios.");
         };
     },

@@ -1,7 +1,6 @@
 const Pacientes = require("../models/pacientes");
 
 const pacientesController = {
-
     async listarPacientes(req, res) {
         const listaDePacientes = await Pacientes.findAll();
         res.status(200).json(listaDePacientes);
@@ -9,7 +8,6 @@ const pacientesController = {
 
     async listarPacientePorId(req, res) {
         const { id } = req.params;
-    
         const paciente = await Pacientes.findByPk(id);
     
         if (!paciente) {
@@ -30,8 +28,8 @@ const pacientesController = {
         });
 
         res.status(201).json(pacienteCadastrado);
-
-        }catch(error){
+        }
+        catch(error){
             res.status(400).json("Todos os campos são obrigatórios.");
         };
     },

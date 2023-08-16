@@ -1,4 +1,5 @@
 const Psicologos = require("../models/psicologos");
+const bcrypt = require("bcryptjs");
 
 const psicologosController = {
 
@@ -9,9 +10,8 @@ const psicologosController = {
 
     async listarPsicologoPorId(req, res) {
         const { id } = req.params;
-    
         const psicologo = await Psicologos.findByPk(id);
-    
+
         if (!psicologo) {
             res.status(404).json("Psicólogo não encontrado");
             return;
@@ -21,20 +21,13 @@ const psicologosController = {
     },
 
     async cadastrarPsicologo(req, res) {
-        try {
         const { nome, email, senha, apresentacao } = req.body;
-        const psicologoCadastrado = await Psicologos.create({
-            nome,
-            email,
-            senha,
-            apresentacao,
-        });
 
-        res.status(201).json(psicologoCadastrado);
+        const newSenha = bcrypt.hashSync(senha, 10);
 
-        }catch(error){
-            res.status(400).json("Todos os campos são obrigatórios.");
-        };
+        const psicologoCadastrado = await Psicologos.create({ nome, email, senha: newSenha, apresentacao });
+
+        return res.status(201).json(psicologoCadastrado);
     },
 
     async deletarPsicologo(req, res) {
