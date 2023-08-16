@@ -4,13 +4,13 @@
 Este projeto se refere a criação de uma API utilizando Node.js, Express e MySQL, projetada para uma clínica fictícia de psicologia chamada Clínica LaVie.
 
 ## Contexto
-Um grupo de psicólogos uniu forças para criar a Clínica LaVie. Para otimizar os atendimentos, eles necessitam de uma API capaz de registrar psicólogos, pacientes e prontuários. Após discussões com os Desenvolvedores Front-end e os Product Owners (PO), foram definidos diversos grupos de endpoints que devem ser implementados.
+Um grupo de psicólogos criou a Clínica LaVie. Para otimizar os atendimentos, eles necessitam de uma API capaz de registrar psicólogos, pacientes e atendimentos.
 
 ## Funcionalidades Principais
 
 1. **LOGIN** - Autenticação dos psicólogos para acessar a plataforma.
-2. **CRUD PACIENTES** 
-3. **CRUD PSICÓLOGOS** 
+2. **CRUD PSICÓLOGOS**  
+3. **CRUD PACIENTES** 
 4. **CRUD ATENDIMENTOS** 
 5. **DOCUMENTAÇÃO DA API** 
 
@@ -20,5 +20,5 @@ Um grupo de psicólogos uniu forças para criar a Clínica LaVie. Para otimizar 
 - Criar um banco de dados, incluindo o design de Entidade-Relacionamento (DER) e tabelas;
 - Estabelecer conexão e realizar manipulações no banco de dados utilizando Sequelize.
 
-## Como Acessar
+## Documentação e link
 Em breve!
