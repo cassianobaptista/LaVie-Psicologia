@@ -1,5 +1,5 @@
 # Clínica LaVie
-![Badge em Desenvolvimento](https://img.shields.io/badge/status-Desenvolvimento-yellow)
+![Badge em Desenvolvimento](https://img.shields.io/badge/status-Concluído-green)
 
 Este projeto se refere a criação de uma API utilizando Node.js, Express e MySQL, projetada para uma clínica fictícia de psicologia chamada Clínica LaVie.
 
